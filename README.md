@@ -92,7 +92,7 @@ Procede de un estudio médico en mujeres de origen Pima, por lo que **no represe
 - `age`, `sex`, `bmi`, `children`, `smoker`, `region`, `charges`.  
 - Variables categóricas y numéricas combinadas.
 
-Ambos son **datasets públicos de Kaggle**, ideales para fines educativos y de comparación de modelos.
+Ambos son **datasets públicos de Kaggle**.
 
 ---
 
