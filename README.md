@@ -1,6 +1,6 @@
-# 🧾 Medical Insurance & Diabetes Prediction API
+# API predicción de seguro medico y diabetes
 
-## 📘 Descripción general
+## Descripción general
 Este proyecto implementa dos modelos de *Machine Learning*:
 
 1. **Predicción de costos de seguro médico** (Regresión Lineal).  
@@ -10,13 +10,13 @@ Ambos modelos fueron entrenados y desplegados como una **API REST con FastAPI**,
 
 ---
 
-## 🧩 Modelos utilizados
+##  Modelos utilizados
 - **Seguro médico:** [Medical Insurance Cost with Linear Regression (Kaggle)](https://www.kaggle.com/code/mariapushkareva/medical-insurance-cost-with-linear-regression)  
 - **Diabetes:** [Diabetes Logistic Regression (Kaggle)](https://www.kaggle.com/code/arezalo/diabetes-logistic-regression)
 
 ---
 
-## 🧠 1) Umbral ideal para el modelo de predicción de diabetes
+##  1) Umbral ideal para el modelo de predicción de diabetes
 El modelo de **regresión logística** entrega una probabilidad de que el paciente tenga diabetes (`predict_proba`).  
 Para decidir el diagnóstico (0 = no, 1 = sí), se definió el **umbral óptimo mediante la estadística de Youden**:
 
@@ -27,27 +27,27 @@ J = \text{Sensibilidad} + \text{Especificidad} - 1
 El punto que maximiza `J` define el equilibrio entre sensibilidad y especificidad.  
 En este caso, el **umbral ideal fue ≈ 0.32**, lo que significa que si la probabilidad predicha ≥ 0.32, el modelo clasifica el caso como positivo.
 
-> 🔍 Este valor permite detectar más casos de diabetes sin elevar excesivamente los falsos positivos.
+>  Este valor permite detectar más casos de diabetes sin elevar excesivamente los falsos positivos.
 
 ---
 
-## 💸 2) Factores que más influyen en los costos del seguro médico
+##  2) Factores que más influyen en los costos del seguro médico
 Según el modelo de regresión lineal y el análisis con *RandomForestRegressor*:
 
 | Factor | Influencia estimada |
 |--------|---------------------|
-| **smoker** | 🚬 Muy alta (fumadores pagan mucho más) |
-| **age** | 📈 Aumenta el costo con la edad |
-| **bmi** | 🧍‍♂️ Elevado índice de masa corporal aumenta riesgo |
-| **region** | 🌎 Afecta ligeramente según localización |
-| **children** | 👶 Incremento leve por número de dependientes |
-| **sex** | ⚧ Influencia baja o marginal |
+| **smoker** |  Muy alta (fumadores pagan mucho más) |
+| **age** |  Aumenta el costo con la edad |
+| **bmi** |  Elevado índice de masa corporal aumenta riesgo |
+| **region** |  Afecta ligeramente según localización |
+| **children** |  Incremento leve por número de dependientes |
+| **sex** |  Influencia baja o marginal |
 
-> 🧾 Estos resultados son consistentes con el dataset: los fumadores y personas con mayor IMC presentan los costos más altos.
+>  Estos resultados son consistentes con el dataset: los fumadores y personas con mayor IMC presentan los costos más altos.
 
 ---
 
-## ⚖️ 3) Análisis comparativo de características (RandomForest)
+##  3) Análisis comparativo de características (RandomForest)
 Se entrenó un **RandomForestClassifier (diabetes)** y un **RandomForestRegressor (seguros)**, calculando importancias normalizadas.  
 Comparativamente:
 
@@ -59,13 +59,13 @@ Comparativamente:
 | `glucose` | Muy alta | — |
 | `bloodpressure` | Moderada | — |
 
-📊 **Conclusión:**  
+ **Conclusión:**  
 Variables como `age` y `bmi` influyen en ambos modelos, lo que sugiere correlaciones entre salud metabólica y costos médicos.  
 En cambio, `glucose` y `smoker` son específicas de cada contexto.
 
 ---
 
-## ⚙️ 4) Técnicas de optimización aplicadas
+##  4) Técnicas de optimización aplicadas
 
 | Técnica | Aplicación | Beneficio |
 |----------|-------------|------------|
@@ -75,11 +75,11 @@ En cambio, `glucose` y `smoker` son específicas de cada contexto.
 | **Feature engineering** | Variables cruzadas (`bmi*age`, `smoker*bmi`) | Incrementa la capacidad predictiva |
 | **Balance de clases (SMOTE o class_weight)** | En dataset de diabetes | Mejora sensibilidad |
 
-> ⚙️ En pruebas, la combinación de *regularización + validación cruzada* aumentó el rendimiento general y redujo el sesgo.
+>  En pruebas, la combinación de *regularización + validación cruzada* aumentó el rendimiento general y redujo el sesgo.
 
 ---
 
-## 🧾 5) Contexto de los datos
+##  5) Contexto de los datos
 
 ### 🧬 *Diabetes dataset (Pima Indians)*
 Contiene 768 registros con variables clínicas:
@@ -88,7 +88,7 @@ Contiene 768 registros con variables clínicas:
 
 Procede de un estudio médico en mujeres de origen Pima, por lo que **no representa toda la población mundial**.
 
-### 🏥 *Insurance dataset*
+###  *Insurance dataset*
 1.338 registros de pólizas de salud con información demográfica:
 - `age`, `sex`, `bmi`, `children`, `smoker`, `region`, `charges`.  
 - Variables categóricas y numéricas combinadas.
@@ -97,7 +97,7 @@ Ambos son **datasets públicos de Kaggle**, ideales para fines educativos y de c
 
 ---
 
-## ⚖️ 6) Sesgo y limitaciones de los modelos
+##  6) Sesgo y limitaciones de los modelos
 
 | Tipo de sesgo | Explicación | Impacto |
 |----------------|-------------|----------|
@@ -110,9 +110,9 @@ Ambos son **datasets públicos de Kaggle**, ideales para fines educativos y de c
 
 ---
 
-## 🚀 Ejecución de la aplicación
+##  Ejecución de la aplicación
 
-### 1️⃣ Crear entorno virtual
+### 1️ Crear entorno virtual
 ```bash
 python -m venv .venv
 source .venv/bin/activate   # En Linux/Mac
@@ -120,7 +120,7 @@ source .venv/bin/activate   # En Linux/Mac
 pip install -r requirements.txt
 ```
 
-### 2️⃣ Entrenar modelos
+### 2️ Entrenar modelos
 ```bash
 python train_insurance.py
 python train_diabetes.py
@@ -133,17 +133,17 @@ models/
  └─ diabetes.pkl
 ```
 
-### 3️⃣ Levantar API
+### 3️ Levantar API
 ```bash
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 Accede a la documentación interactiva en:  
-👉 **http://localhost:8000/docs**
+ **http://localhost:8000/docs**
 
 ---
 
-## 📦 Ejemplo de uso
+##  Ejemplo de uso
 
 ### `/predict/insurance`
 ```json
@@ -181,7 +181,7 @@ Accede a la documentación interactiva en:
 
 ---
 
-## 🧱 Estructura del repositorio
+##  Estructura del repositorio
 ```
 Proyecto-app-ia-dos/
 ├─ data/
@@ -199,6 +199,6 @@ Proyecto-app-ia-dos/
 
 ---
 
-## 👤 Autor
+##  Autores
 **Camilo Herrera - Victor Mardones - Debora Leal**  
 Ingeniería en Informática — INACAP  
