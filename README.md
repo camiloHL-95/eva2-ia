@@ -21,7 +21,7 @@ El modelo de **regresión logística** entrega una probabilidad de que el pacien
 Para decidir el diagnóstico (0 = no, 1 = sí), se definió el **umbral óptimo mediante la estadística de Youden**:
 
 \[
-J = \text{Sensibilidad} + \text{Especificidad} - 1
+J = Sensibilidad + Especificidad - 1
 \]
 
 El punto que maximiza `J` define el equilibrio entre sensibilidad y especificidad.  
