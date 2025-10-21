@@ -1,4 +1,3 @@
-# main.py — API unificada para Diabetes (clasificación) y Seguros (regresión)
 from fastapi import FastAPI, Query
 from pydantic import BaseModel, Field
 import pandas as pd
@@ -10,9 +9,7 @@ app = FastAPI(title="Medical Models API — Diabetes & Insurance")
 
 logger = logging.getLogger("medical_models_api")
 
-# ==== CARGA DE MODELOS (ajusta las rutas a tus artefactos) ====
-# Estos pickles deben ser Pipelines de sklearn con el preprocesamiento incluido.
-# Ej: ColumnTransformer + StandardScaler/OneHot + modelo final
+#CARGA DE MODELOS
 DIABETES_MODEL_PATH = "models/diabetes.pkl"
 INSURANCE_MODEL_PATH = "models/insurance.pkl"
 
@@ -28,7 +25,7 @@ except Exception as e:
     logger.exception("No se pudo cargar el modelo de seguros")
     model_insurance = None
 
-# ==== ESQUEMAS DE ENTRADA (ajusta nombres según tus columnas reales) ====
+#ESQUEMAS DE ENTRADA
 class DiabetesInput(BaseModel):
     Pregnancies: int
     Glucose: float
@@ -64,7 +61,6 @@ def predict_diabetes(
         return {"error": "Modelo de diabetes no cargado"}
 
     df = pd.DataFrame([payload.dict()])
-    # predict_proba disponible si el modelo es probabilístico (LogReg, etc.)
     proba_1 = float(model_diabetes.predict_proba(df)[:, 1][0])
     pred = int(proba_1 >= threshold)
 
