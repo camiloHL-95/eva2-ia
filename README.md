@@ -181,7 +181,7 @@ Accede a la documentación interactiva en:
 
 ##  Estructura del repositorio
 ```
-Proyecto-app-ia-dos/
+eva2-ia/
 ├─ data/
 │  ├─ diabetes.csv
 │  └─ insurance.csv
