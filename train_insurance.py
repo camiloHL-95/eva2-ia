@@ -13,7 +13,7 @@ DATA_PATH = BASE_DIR / "data" / "insurance.csv"
 OUT_DIR = BASE_DIR / "models"
 OUT_DIR.mkdir(exist_ok=True, parents=True)
 
-# 1) Cargar y normalizar columnas
+# Cargar y normalizar columnas
 df = pd.read_csv(DATA_PATH)
 df.columns = df.columns.str.strip().str.lower()
 
@@ -28,7 +28,7 @@ df["age"] = pd.to_numeric(df["age"], errors="coerce")
 df["bmi"] = pd.to_numeric(df["bmi"], errors="coerce")
 df["children"] = pd.to_numeric(df["children"], errors="coerce")
 
-# Opcional: limpiar espacios y minúsculas en categóricas
+# limpieza
 for c in ["sex","smoker","region"]:
     df[c] = df[c].astype(str).str.strip().str.lower()
 
