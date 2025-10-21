@@ -200,6 +200,5 @@ Proyecto-app-ia-dos/
 ---
 
 ## 👤 Autor
-**Camilo Herrera**  
+**Camilo Herrera - Victor Mardones - Debora Leal**  
 Ingeniería en Informática — INACAP  
-Proyecto de práctica profesional en desarrollo y despliegue de modelos predictivos con FastAPI.
