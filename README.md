@@ -75,13 +75,12 @@ En cambio, `glucose` y `smoker` son específicas de cada contexto.
 | **Feature engineering** | Variables cruzadas (`bmi*age`, `smoker*bmi`) | Incrementa la capacidad predictiva |
 | **Balance de clases (SMOTE o class_weight)** | En dataset de diabetes | Mejora sensibilidad |
 
->  En pruebas, la combinación de *regularización + validación cruzada* aumentó el rendimiento general y redujo el sesgo.
 
 ---
 
 ##  5) Contexto de los datos
 
-### 🧬 *Diabetes dataset (Pima Indians)*
+###  *Diabetes dataset (Pima Indians)*
 Contiene 768 registros con variables clínicas:
 - Glucosa, presión, insulina, BMI, edad, etc.  
 - Etiqueta: `outcome` (1 = diabetes, 0 = no).
@@ -106,7 +105,6 @@ Ambos son **datasets públicos de Kaggle**, ideales para fines educativos y de c
 | **Desbalance de clases (diabetes)** | Menor cantidad de casos positivos | Afecta precisión sin ajuste de umbral |
 | **Sesgo de correlación** | Algunas variables actúan como proxies (ej. `region` ↔ nivel de vida) | Riesgo de interpretaciones erróneas |
 
-> 💡 Para mitigarlo se aplicaron técnicas de escalado, validación cruzada y regularización. Sin embargo, los modelos deben considerarse demostrativos y no clínicos.
 
 ---
 
